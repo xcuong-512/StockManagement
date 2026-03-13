@@ -22,7 +22,7 @@ public class StockController {
             System.out.println("1. Hiển thị toàn bộ mã");
             System.out.println("2. Thêm cổ phiếu");
             System.out.println("3. Cập nhật giá");
-            System.out.println("4. Xóa mã cổ phiê");
+            System.out.println("4. Xóa mã cổ phiếu");
             System.out.println("5. Tìm kiếm cổ phiếu");
             System.out.println("6. Sắp xếp theo giá");
             System.out.println("0. Thoát");
