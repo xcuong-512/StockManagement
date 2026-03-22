@@ -14,19 +14,19 @@ public class AuthenticationUI {
     }
 
     public User login(){
-        System.out.print("Tên đăng nhập: ");
+        System.out.print("Username: ");
         String username = scanner.nextLine();
-        System.out.print("Mật khẩu: ");
+        System.out.print("Password: ");
         String password = scanner.nextLine();
         return authService.login(username, password);
     }
 
     public void register(){
-        System.out.print("Tên đăng nhập: ");
+        System.out.print("Username: ");
         String username = scanner.nextLine();
-        System.out.print("Mật khẩu: ");
+        System.out.print("Password: ");
         String password = scanner.nextLine();
         authService.register(username, password);
-        System.out.println("Đăng ký thành công");
+        System.out.println("Registration successful");
     }
 }

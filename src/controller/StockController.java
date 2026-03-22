@@ -19,16 +19,16 @@ public class StockController {
 //        scanner.nextLine();
         while(true){
             System.out.println("=====MENU=====");
-            System.out.println("1. Hiển thị toàn bộ mã");
-            System.out.println("2. Thêm cổ phiếu");
-            System.out.println("3. Cập nhật giá");
-            System.out.println("4. Xóa mã cổ phiếu");
-            System.out.println("5. Tìm kiếm cổ phiếu");
-            System.out.println("6. Sắp xếp theo giá");
-            System.out.println("0. Thoát");
+            System.out.println("1. Show all stocks");
+            System.out.println("2. Add stock");
+            System.out.println("3. Update price");
+            System.out.println("4. Delete stock");
+            System.out.println("5. Search stock");
+            System.out.println("6. Sort by price");
+            System.out.println("0. Exit");
             System.out.println("=====MENU=====");
 
-            System.out.println("Nhâp lựa chọn: ");
+            System.out.print("Enter choice: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice){
@@ -49,7 +49,7 @@ public class StockController {
         List<Stock> stocks = stockService.getAllStocks();
 
         if(stocks.isEmpty()){
-            System.out.println("Danh sách cổ phiếu trống.");
+            System.out.println("Stock list is empty.");
             return;
         }
 
@@ -60,54 +60,54 @@ public class StockController {
         System.out.print("Code: ");
         String code = scanner.nextLine();
 
-        System.out.print("Tên cổ phiếu: ");
+        System.out.print("Stock name: ");
         String name = scanner.nextLine();
 
-        System.out.print("Đơn giá: ");
+        System.out.print("Price: ");
         double price = Double.parseDouble(scanner.nextLine());
 
-        System.out.print("Nhóm Ngành: ");
+        System.out.print("Sector: ");
         String type = scanner.nextLine();
 
         stockService.addStock(new Stock(code, name, price, type));
-        System.out.println("Đã thêm cổ phiếu!");
+        System.out.println("Stock added successfully!");
     }
 
     private void updateStock(){
-        System.out.print("Mã cổ phiếu: ");
+        System.out.print("Stock code: ");
         String code = scanner.nextLine();
 
-        System.out.print("Giá mới: ");
+        System.out.print("New price: ");
         double price = Double.parseDouble(scanner.nextLine());
 
         stockService.updateStock(code, price);
     }
 
     private void deleteStock(){
-        System.out.print("Nhập mã cổ phiếu: ");
+        System.out.print("Enter stock code: ");
         String code = scanner.nextLine();
         stockService.deleteStock(code);
-        System.out.println("Đã xóa thành công cổ phiếu");
+        System.out.println("Stock deleted successfully!");
     }
 
     private void searchStock(){
-        System.out.println("1. Tìm bằng mã: ");
-        System.out.println("2. Tìm bằng tên: ");
+        System.out.println("1. Search by code: ");
+        System.out.println("2. Search by name: ");
 
         int c = Integer.parseInt(scanner.nextLine());
 
         List<Stock> result;
 
         if (c == 1){
-            System.out.println("Nhập mã cổ phiếu: ");
+            System.out.print("Enter stock code: ");
             result = stockService.searchByCode(scanner.nextLine());
         }
         else {
-            System.out.println("Nhập tên cổ phiếu: ");
+            System.out.print("Enter stock name: ");
             result = stockService.searchByName(scanner.nextLine());
         }
         if (result.isEmpty()) {
-            System.out.println("Không tìm thấy cổ phiếu.");
+            System.out.println("Stock not found.");
         }
         else {
             printStockTable(result);
@@ -123,7 +123,7 @@ public class StockController {
 
         System.out.println("+----------+------------------------------+------------+-------------+");
         System.out.printf("| %-8s | %-28s | %-10s | %-11s |\n",
-                "Mã CP", "Công ty", "Giá", "Nhóm Ngành");
+                "Code", "Company", "Price", "Sector");
         System.out.println("+----------+------------------------------+------------+-------------+");
 
         for (Stock s : stocks) {
